@@ -2,13 +2,19 @@ object main {
 
 
   def main(args: Array[String]): Unit = {
-    val opcion = 58783
-    print(Condicionales(opcion).capitalize)
+    val opcion = 1
+    println(Condicionales(opcion).capitalize)
     Bucles(opcion)
   }
 
   def Bucles(opcion: Int): Unit = {
-
+    var aux = opcion
+    while (aux < 12) {
+      println("Opcion vale : " + aux)
+      //Interpolacion
+      println(s"Opcion vale interpolada: ${aux}")
+      aux = aux + 1
+    }
   }
 
   def Condicionales(opcion: Int): String = {
