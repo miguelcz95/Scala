@@ -10,7 +10,55 @@ object main {
     //Collections(opcion)
     //Mapas(opcion)
     //SetsInmutables(opcion)
-    SetsMutables(opcion)
+    //SetsMutables(opcion)
+    //MapasEstructura()
+    ForEachFor(opcion)
+  }
+
+  def ForEachFor(opcion: Int): Unit = {
+    val lenguajes = Seq("Java", "Scala", "Python", "Javascript", "Swift")
+    val opiniones = Seq("Bueno", "Aburrido", "Excelente")
+
+    lenguajes.foreach(lenguaje => println(s"${lenguaje} es un buen lenguaje de programacion"))
+    //se pueden anidar varios for en uno for(l <- lenguajes; o <- opiniones)
+    for (l <- lenguajes) {
+      println(s"$l es un buen lenguaje, se imprime de la segunda forma")
+    }
+
+    println("Lenguajes con opiniones Forma 1")
+    lenguajes.foreach(l => opiniones.foreach(o => println(s"$l opinion: $o")))
+
+    println("Lenguajes con opiniones Forma 2")
+    for (l <- lenguajes; o <- opiniones) {
+      println(s"$l opinion: $o")
+    }
+
+    //for con condiciones en el ciclo
+    for (l <- lenguajes if l.endsWith("a"); o <- opiniones if o.startsWith("a".toUpperCase)) {
+      println(s"$l me parece $o")
+    }
+  }
+
+  def MapasEstructura(): Unit = {
+    val mapa = Map(1 -> ("Luis"), 2 -> ("Miguel"), 3 -> ("Mariana"))
+    println("valores del mapa: " + mapa.values)
+    println("valores con get: " + mapa.get(3))
+    //devuelve un none cuando no esta el identifcador
+    println("valores con get: " + mapa.map(x =>
+      //Revisar
+      if (x.eq("Luis")) {
+        "Luis2"
+      } else {
+        "nada"
+      }))
+
+    mapa ++ Map(5 -> "prueba", 6 -> "prueba2")
+
+    //Mapa Mutable
+    val mapaMutable = mutable.Map(1 -> "123", 2 -> "321", 3 -> "456")
+    mapaMutable += (5 -> "789")
+    mapaMutable ++= Map(4 -> "654")
+    println("Mapa mutable: " + mapaMutable)
   }
 
   def SetsMutables(i: Int): Unit = {
@@ -30,7 +78,7 @@ object main {
     println("Set Mutable: " + mset.toString())
 
     val sset = mutable.SortedSet(1, 5, 4, 6, 3, 8)
-    println("Set Ordenado: " + sset.)
+    println("Set Ordenado: " + sset)
 
   }
 
